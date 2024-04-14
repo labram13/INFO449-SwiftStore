@@ -7,9 +7,24 @@
 
 import Foundation
 
-protocol SKU {}
+protocol SKU {
+    var name: String { get }
+    func price() -> Int
+}
 
-class Item {}
+class Item: SKU {
+    var name: String
+    var itemPrice: Int
+    
+    init(_ name: String, _ price: Int) {
+        self.name = name
+        self.itemPrice = price
+    }
+    
+    func price() -> Int {
+        return self.itemPrice
+    }
+}
 
 class Receipt {}
 
