@@ -16,9 +16,9 @@ class Item: SKU {
     var name: String
     var itemPrice: Int
     
-    init(_ name: String, _ price: Int) {
+    init(name: String, priceEach: Int) {
         self.name = name
-        self.itemPrice = price
+        self.itemPrice = priceEach
     }
     
     func price() -> Int {
@@ -27,27 +27,64 @@ class Item: SKU {
 }
 
 class Receipt {
-    var items: [SKU] = []
+    var allItems: [SKU] = []
+    
+    func items() -> [SKU] {
+        return allItems
+    }
+    
+    func output() -> String {
+        var total = 0;
+        var receiptOutput = """
+Receipt:
+"""
+        for item in allItems {
+            receiptOutput += "\n\(item.name): $\(Double(item.price()) / 100.0)"
+            total += item.price()
+        }
+        receiptOutput += "\n------------------"
+        receiptOutput += "\nTOTAL: $\(Double(total) / 100.0)"
+        return receiptOutput
+    }
+    
+    func total() -> Int {
+        var total = 0
+        print(allItems.count)
+        for item in allItems {
+            total += item.price()
+        }
+        print(total)
+        return total
+    }
+    
 }
 
 class Register {
     var receipt: Receipt
     
-    init(receipt: Receipt) {
+    init() {
         self.receipt =  Receipt()
     }
     
-    func subtotal() -> String {
-        //convert to string
-        //return total so far.
-        return ""
+    func scan(_ item: Item) {
+        receipt.allItems.append(item)
     }
     
-    func total() -> String {
-        //clear receipt
-        self.receipt.items.removeAll()
-        return ""
+    func subtotal() -> Int {
+        var subtotal = 0
+        for item in receipt.allItems {
+            subtotal += item.price()
+        }
+        return subtotal
     }
+    
+    func total() -> Receipt {
+        let endReceipt = self.receipt
+        self.receipt = Receipt()
+        return endReceipt
+    }
+     
+    
 }
 
 class Store {
