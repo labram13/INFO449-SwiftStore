@@ -48,7 +48,7 @@ Implement the following:
     * Implement an `items` method that returns the list of SKUs that were scanned.
     * Implement an `output` method to print out all of the items stored on the Receipt.
 
-* Create a class `Item` that implements `SKU` and uses a price-per-item pricing scheme. That is to say, a $4.99 can of beans (an `Iten("Beans", 499)`) or a $.99 pencil (a `Item("Pencil", 99)`).
+* Create a class `Item` that implements `SKU` and uses a price-per-item pricing scheme. That is to say, a $4.99 can of beans (an `Item("Beans", 499)`) or a $.99 pencil (a `Item("Pencil", 99)`).
     * Create a unit test that tests adding a single Item to the Register and displays its subtotal (which should be the single Item's price).
 
 ## Now for the fun part

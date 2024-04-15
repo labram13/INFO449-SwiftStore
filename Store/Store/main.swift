@@ -26,9 +26,29 @@ class Item: SKU {
     }
 }
 
-class Receipt {}
+class Receipt {
+    var items: [SKU] = []
+}
 
-class Register {}
+class Register {
+    var receipt: Receipt
+    
+    init(receipt: Receipt) {
+        self.receipt =  Receipt()
+    }
+    
+    func subtotal() -> String {
+        //convert to string
+        //return total so far.
+        return ""
+    }
+    
+    func total() -> String {
+        //clear receipt
+        self.receipt.items.removeAll()
+        return ""
+    }
+}
 
 class Store {
     let version = "0.1"
