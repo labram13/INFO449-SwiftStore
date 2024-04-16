@@ -7,7 +7,7 @@
 
 //Implemented functionality and tests for the following extra credit features:
 // - Added discount for 2-1 items
-// - Added classes and tests to add fruits, veggies, and meet (rounds up to the nearest penny)
+// - Added classes and tests to add fruits, veggies, and meat (rounds up to the nearest penny)
 // - Added group buy functionality (PrincingScheme) and testing for group buys on ketchup and beer.
 
 import Foundation
