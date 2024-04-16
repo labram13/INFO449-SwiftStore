@@ -66,4 +66,51 @@ TOTAL: $7.97
 """
         XCTAssertEqual(expectedReceipt, receipt.output())
     }
+    
+    
+    //Testing for extra credit starts here-----------------------------------------------
+    func testTwoForOne() {
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        let receipt = register.total()
+        XCTAssertEqual(398, receipt.total())
+    }
+    
+    func testTwoForOneSixItems() {
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        let receipt = register.total()
+        XCTAssertEqual(796, receipt.total())
+    }
+    
+    func testWeighedFood() {
+        register.scan(WeighedFood("banana", 299, 3.5, "Fruit"))
+        let receipt = register.total()
+        XCTAssertEqual(1047, receipt.total())
+    }
+    
+    func testPricingScheme() {
+        register.scan(Item(name: "Beer", priceEach: 1399))
+        register.scan(Item(name: "Ketchup", priceEach: 399))
+        let receipt = register.total()
+        XCTAssertTrue(receipt.PricingScheme())
+        XCTAssertEqual(1618, receipt.total())
+    }
+    
+    func testTwoForOneAndPricingSheme() {
+        register.scan(Item(name: "Beer", priceEach: 1399))
+        register.scan(Item(name: "Ketchup", priceEach: 399))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        register.scan(Item(name: "Beans (8oz Can)", priceEach: 199))
+        let receipt = register.total()
+        XCTAssertEqual(1976, receipt.total())
+        print(receipt.output())
+
+    }
 }
